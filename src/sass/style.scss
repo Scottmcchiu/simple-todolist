@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css?family=Caveat&display=swap');
+@import 'normalize.scss';
+
+$style-font: 'Caveat', cursive;
+$standard: #434547;
+$light: #c1c6bf;
+$white: #ffffff;
+$green: #4be714;
+$red: #ed1b1b;
+
+
+@mixin phone-width($width: 320px) {
+  @media screen and (max-width: 640px) {
+    width: $width;
+    @content;
+  }
+}
+
+%clear-fix{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+%icon-style{
+  margin: 5px;
+  float: left;
+  color: $light;
+  opacity: 0.8;
+}
+
+// font
+body {
+  font: {
+    family: $style-font;
+    size: 30px;
+  }
+}
+
+// outfit & title
+#container {
+  width: 640px;
+  margin: 10px auto;
+  text-align: center;
+  @include phone-width;
+  h1 {
+    width: 250px;
+    margin: 0 auto;
+    color: $standard;
+  }
+}
+
+#main {
+  width: 100%;
+  margin-top: 20px;
+  padding-bottom: 5px;
+  ul {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    list-style-type: none;
+  }
+}
+
+// contents
+.list {
+  margin: 5px auto;
+  padding: 0;
+  border: 1px solid $light;
+  border-radius: 5px;
+  background-color: $white;
+  @include phone-width;
+  &::after {
+    @extend %clear-fix;
+  }
+}
+
+.fa-check {
+  @extend %icon-style;
+}
+
+.done {
+  color: $green;
+}
+
+.list-items {
+  margin: 5px;
+  width: 85%;
+  float: left;
+  border: none;
+  padding: 0;
+  color: $standard;
+  background-color: $white;
+  outline: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  @include phone-width(70%);
+  &:hover {
+    cursor: default;
+  }
+}
+
+.complete {
+  color: $light;
+  text-decoration: line-through;
+  opacity: 0.8;
+}
+
+.fa-trash-alt {
+  @extend %icon-style;
+}
+
+.delete {
+  color: $red;
+}
+
+// hints
+#hints {
+  width: 400px;
+  height: 40px;
+  margin: 10px auto;
+  padding: 0 10px;
+  background-color: $standard;
+  border-radius: 0 5px 5px 5px;
+  text-align: left;
+  position: relative;
+  @include phone-width(200px) {
+    height: 120px;
+  };
+  &::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: #434547;
+    border-radius: 5px 0 0 0;
+    position: absolute;
+    left: 0;
+    transform: skewX(60deg);
+  }
+  p {
+    margin: 0 5px;
+    border: 0;
+    color: $white;
+    position: absolute;
+  }
+}
