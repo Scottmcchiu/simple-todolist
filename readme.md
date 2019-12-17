@@ -1,4 +1,4 @@
-optimize-css-assets-webpack-plugin## Simple To Do List
+## Simple To Do List
 
 - function
   - general CRUD frame
